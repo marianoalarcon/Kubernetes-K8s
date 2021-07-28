@@ -1,0 +1,23 @@
+➜  demo aws ecr create-repository --repository-name demo
+
+{
+    "repository": {
+        "repositoryArn": "arn:aws:ecr:us-east-1:770750324254:repository/demo",
+        "registryId": "770750324254",
+        "repositoryName": "demo",
+        "repositoryUri": "770750324254.dkr.ecr.us-east-1.amazonaws.com/demo",
+        "createdAt": "2021-07-21T22:16:17-03:00",
+        "imageTagMutability": "MUTABLE",
+        "imageScanningConfiguration": {
+            "scanOnPush": false
+        },
+        "encryptionConfiguration": {
+            "encryptionType": "AES256"
+        }
+    }
+}
+
+➜  demo aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 770750324254.dkr.ecr.us-east-1.amazonaws.com/demo
+
+➜  demo docker build -t 770750324254.dkr.ecr.us-east-1.amazonaws.com/demo:1.0 .
+
